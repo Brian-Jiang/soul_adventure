@@ -36,19 +36,4 @@ public class LevelController : MonoBehaviour {
 	public int GetRotationDir() {
 		return rota;
 	}
-	
-	
-
-	private void OnEnable() {
-		
-	}
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	}
 }
