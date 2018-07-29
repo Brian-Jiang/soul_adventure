@@ -6,39 +6,44 @@ using DataTypes;
 public class PlayerController : MonoBehaviour {
 	public float tSpeed;
 	
-	private PlayerStatus status;
+	private PlayerStatus playerStatus;
+	private CameraStatus cameraStatus;
 	private LevelController levelController;
 	private int rota;
 
 //	public PlayerStatus GetStatus() {
-//		return  status;
+//		return  playerStatus;
 //	}
 
 	private void OnEnable() {
 		levelController = (LevelController) FindObjectOfType(typeof(LevelController));
-		status.CopyFrom(levelController.playerStartStatus);
+		CameraController cameraController = (CameraController) FindObjectOfType(typeof(CameraController));
+		cameraController.GetStatus(ref cameraStatus);
+		cameraStatus.intendSize += 5f;
+		playerStatus.CopyFrom(levelController.playerStartStatus);
 	}
 
 	private void Update() {
 		rota = levelController.GetRotationDir();
-//		status.speed = tSpeed;
-		status.Update();
-		Debug.Log(status.speed);
-		transform.Translate(0f, status.speed * Time.deltaTime, 0f);
-		transform.Rotate(Vector3.back * rota * status.rotationSpeed * Time.deltaTime);
+//		playerStatus.speed = tSpeed;
+		playerStatus.Update();
+//		Debug.Log(playerStatus.speed);
+		transform.Translate(0f, playerStatus.speed * Time.deltaTime, 0f);
+		transform.Rotate(Vector3.back * rota * playerStatus.rotationSpeed * Time.deltaTime);
 	}
 
 	private void OnTriggerEnter2D(Collider2D other)
 	{
 		if (other.gameObject.CompareTag("Wall")) {
 			levelController.PlayerDie();
-			Debug.Log(other.gameObject.tag);
+//			Debug.Log(other.gameObject.tag);
 		}
 		else if(other.CompareTag("Trigger")) {
 			TriggerController controller = other.gameObject.GetComponent<TriggerController>();
-			if (controller.changePlayerStatus) {
-				controller.UpdatePlayerStatus(ref status);
-			}
+			controller.Trigger(ref playerStatus, ref cameraStatus);
+//			if (controller.changePlayerStatus) {
+//				controller.UpdatePlayerStatus(ref playerStatus);
+//			}
 		}
 	}
 }

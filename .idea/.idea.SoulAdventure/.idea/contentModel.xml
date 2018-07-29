@@ -8,7 +8,6 @@
         <e p="Scripts" t="Include">
           <e p="CameraController.cs" t="Include" />
           <e p="DataTypes.cs" t="Include" />
-          <e p="FollowPlayerVC.cs" t="Include" />
           <e p="LevelController.cs" t="Include" />
           <e p="PlayerController.cs" t="Include" />
           <e p="TriggerController.cs" t="Include" />

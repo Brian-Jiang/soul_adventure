@@ -29,12 +29,17 @@ namespace DataTypes {
 
         public void UpdateFromConverter(PlayerStatusConverter converter) {
             intendSpeed = converter.intendedSpeed;
+            intendRotationSpeed = converter.intendedRotationalSpeed;
             acceleration = (intendSpeed - speed) / converter.time;
+            rotationAcceleration = (intendRotationSpeed - rotationSpeed) / converter.time;
         }
 
         public void Update() {
             if (Mathf.Abs(speed - intendSpeed) > 0.02f) {
                 speed += acceleration * Time.deltaTime;
+            }
+            if (Mathf.Abs(rotationSpeed - intendRotationSpeed) > 0.5f) {
+                rotationSpeed += rotationAcceleration * Time.deltaTime;
             }
         }
     }
@@ -50,15 +55,47 @@ namespace DataTypes {
     [Serializable]
     public struct CameraStatus {
         public Vector2 deltaFocusPoint;
-        public float zoomSize;
+        public Vector2 intendDFP;
+        public float size;
+        public float intendSize;
         public bool isFollowingPlayer;
         public bool isFollowingPlayerRotation;
 
+        private Vector2 aIntendDFP;
+        private float aIntendSize;
+
         public void CopyFrom(CameraStatus status) {
             deltaFocusPoint = status.deltaFocusPoint;
-            zoomSize = status.zoomSize;
+            intendDFP = status.intendDFP;
+            size = status.size;
+            intendSize = status.intendSize;
+            aIntendDFP = status.aIntendDFP;
+            aIntendSize = status.aIntendSize;
             isFollowingPlayer = status.isFollowingPlayer;
             isFollowingPlayerRotation = status.isFollowingPlayerRotation;
         }
+
+        public void UpdateFromConverter(CameraStatusConverter converter) {
+            intendDFP = converter.intendedDFP;
+            intendSize = converter.intendedSize;
+            aIntendDFP = (intendDFP - deltaFocusPoint) / converter.time;
+            aIntendSize = (intendSize - size) / converter.time;
+        }
+
+        public void Update() {
+            if (Vector2.Distance(deltaFocusPoint, intendDFP) > 0.05f) {
+                deltaFocusPoint += aIntendDFP * Time.deltaTime;
+            }
+            if (Mathf.Abs(size - intendSize) > 0.1f) {
+                size += aIntendSize * Time.deltaTime;
+            }
+        }
+    }
+
+    [Serializable]
+    public struct CameraStatusConverter {
+        public Vector2 intendedDFP;
+        public float intendedSize;
+        public float time; //   second
     }
 }

@@ -57,13 +57,9 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\DataTypes.cs" />
-    <Compile Include="Assets\Scripts\FollowPlayerVC.cs" />
     <Compile Include="Assets\Scripts\LevelController.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\TriggerController.cs" />
-    <Reference Include="Cinemachine">
-      <HintPath>/Users/BrianJiang/UnityProjects/SoulAdventure/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>/Users/BrianJiang/UnityProjects/SoulAdventure/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
@@ -78,9 +74,6 @@
     </Reference>
     <Reference Include="Unity.Postprocessing.Runtime">
       <HintPath>/Users/BrianJiang/UnityProjects/SoulAdventure/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="com.unity.cinemachine.editor">
-      <HintPath>/Users/BrianJiang/UnityProjects/SoulAdventure/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>/Users/BrianJiang/UnityProjects/SoulAdventure/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
