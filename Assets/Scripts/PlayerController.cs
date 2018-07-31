@@ -4,30 +4,22 @@ using UnityEngine;
 using DataTypes;
 
 public class PlayerController : MonoBehaviour {
-	public float tSpeed;
-	
+
+	private CameraController cameraController;
 	private PlayerStatus playerStatus;
 	private CameraStatus cameraStatus;
 	private LevelController levelController;
 	private int rota;
 
-//	public PlayerStatus GetStatus() {
-//		return  playerStatus;
-//	}
-
 	private void OnEnable() {
 		levelController = (LevelController) FindObjectOfType(typeof(LevelController));
-		CameraController cameraController = (CameraController) FindObjectOfType(typeof(CameraController));
-		cameraController.GetStatus(ref cameraStatus);
-		cameraStatus.intendSize += 5f;
+		cameraController = (CameraController) FindObjectOfType(typeof(CameraController));
 		playerStatus.CopyFrom(levelController.playerStartStatus);
 	}
 
 	private void Update() {
 		rota = levelController.GetRotationDir();
-//		playerStatus.speed = tSpeed;
 		playerStatus.Update();
-//		Debug.Log(playerStatus.speed);
 		transform.Translate(0f, playerStatus.speed * Time.deltaTime, 0f);
 		transform.Rotate(Vector3.back * rota * playerStatus.rotationSpeed * Time.deltaTime);
 	}
@@ -36,14 +28,12 @@ public class PlayerController : MonoBehaviour {
 	{
 		if (other.gameObject.CompareTag("Wall")) {
 			levelController.PlayerDie();
-//			Debug.Log(other.gameObject.tag);
 		}
 		else if(other.CompareTag("Trigger")) {
-			TriggerController controller = other.gameObject.GetComponent<TriggerController>();
-			controller.Trigger(ref playerStatus, ref cameraStatus);
-//			if (controller.changePlayerStatus) {
-//				controller.UpdatePlayerStatus(ref playerStatus);
-//			}
+			var controller = other.gameObject.GetComponent<TriggerController>();
+			controller.UpdatePlayerStatus(ref playerStatus);
+			cameraController.Trigger(controller);
+			other.gameObject.SetActive(false);
 		}
 	}
 }

@@ -9,22 +9,15 @@ public class TriggerController : MonoBehaviour {
     public PlayerStatusConverter playerStatusConverter;
     public CameraStatusConverter cameraStatusConverter;
 
-    public void Trigger(ref PlayerStatus status, ref CameraStatus cameraStatus) {
+    public void UpdatePlayerStatus(ref PlayerStatus status) {
         if (changePlayerStatus) {
-            UpdatePlayerStatus(ref status);
+            status.UpdateFromConverter(playerStatusConverter);
         }
+    }
 
+    public void UpdateCameraStatus(ref CameraStatus status) {
         if (changeCameraStatus) {
-            UpdateCameraStatus(ref cameraStatus);
+            status.UpdateFromConverter(cameraStatusConverter);
         }
-        gameObject.SetActive(false);
-    }
-
-    private void UpdatePlayerStatus(ref PlayerStatus status) {
-        status.UpdateFromConverter(playerStatusConverter);
-    }
-
-    private void UpdateCameraStatus(ref CameraStatus status) {
-        status.UpdateFromConverter(cameraStatusConverter);
     }
 }

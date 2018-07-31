@@ -8,11 +8,9 @@ public class CameraController : MonoBehaviour {
 	public Transform playerTransform;
 	public float translationalDeltaMultiplier;
 	public float rotationDeltaMultiplier;
-	public float sizeDeltaMultiplier;
 
 	private float translationDelta = 0f;
 	private float rotationDelta = 0f;
-//	private float cameraSizeDelta = 0f;
 	private LevelController levelController;
 	private Animator animator;
 	private CameraStatus status;
@@ -25,13 +23,12 @@ public class CameraController : MonoBehaviour {
 		status.CopyFrom(levelController.cameraStartStatus);
 	}
 
-	public ref CameraStatus GetStatus(ref CameraStatus cStatus) {
-//		cStatus = status;
-		return ref status;
-	}
-
 	public void PlayerDieAnimation() {
 		animator.SetTrigger("Die");
+	}
+
+	public void Trigger(TriggerController controller) {
+		controller.UpdateCameraStatus(ref status);
 	}
 
 	private void Update() {
@@ -39,9 +36,9 @@ public class CameraController : MonoBehaviour {
 		
 		// move position
 		Vector2 currentPosition = transform.position;
-		translationDelta = Vector2.Distance(currentPosition, playerTransform.position) / 10f * translationalDeltaMultiplier;
-		Vector2 newPosition = Vector2.MoveTowards(currentPosition, playerTransform.position, translationDelta);
-		newPosition += status.deltaFocusPoint;
+		translationDelta = Vector2.Distance(currentPosition, playerTransform.position + (Vector3)status.deltaFocusPoint) / 10f * translationalDeltaMultiplier;
+		Vector2 newPosition = 
+			Vector2.MoveTowards(currentPosition, playerTransform.position + (Vector3)status.deltaFocusPoint, translationDelta);
 		transform.position = (Vector3)newPosition + Vector3.back;
 
 		// change size

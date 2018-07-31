@@ -38,7 +38,7 @@ namespace DataTypes {
             if (Mathf.Abs(speed - intendSpeed) > 0.02f) {
                 speed += acceleration * Time.deltaTime;
             }
-            if (Mathf.Abs(rotationSpeed - intendRotationSpeed) > 0.5f) {
+            if (Mathf.Abs(rotationSpeed - intendRotationSpeed) > 1f) {
                 rotationSpeed += rotationAcceleration * Time.deltaTime;
             }
         }
@@ -61,6 +61,9 @@ namespace DataTypes {
         public bool isFollowingPlayer;
         public bool isFollowingPlayerRotation;
 
+        private float timeD;
+        private float deltaDFP;
+        private float deltaSize;
         private Vector2 aIntendDFP;
         private float aIntendSize;
 
@@ -69,8 +72,6 @@ namespace DataTypes {
             intendDFP = status.intendDFP;
             size = status.size;
             intendSize = status.intendSize;
-            aIntendDFP = status.aIntendDFP;
-            aIntendSize = status.aIntendSize;
             isFollowingPlayer = status.isFollowingPlayer;
             isFollowingPlayerRotation = status.isFollowingPlayerRotation;
         }
@@ -78,16 +79,20 @@ namespace DataTypes {
         public void UpdateFromConverter(CameraStatusConverter converter) {
             intendDFP = converter.intendedDFP;
             intendSize = converter.intendedSize;
-            aIntendDFP = (intendDFP - deltaFocusPoint) / converter.time;
-            aIntendSize = (intendSize - size) / converter.time;
+            timeD = converter.time;
         }
 
         public void Update() {
-            if (Vector2.Distance(deltaFocusPoint, intendDFP) > 0.05f) {
-                deltaFocusPoint += aIntendDFP * Time.deltaTime;
-            }
-            if (Mathf.Abs(size - intendSize) > 0.1f) {
-                size += aIntendSize * Time.deltaTime;
+            if (!Mathf.Approximately(timeD, 0f)) {
+                float disDFP = Vector2.Distance(deltaFocusPoint, intendDFP);
+//                Debug.Log("distance: " + disDFP);
+                deltaDFP = disDFP / timeD * Time.deltaTime * 2f; // * multiplier
+                deltaFocusPoint = Vector2.MoveTowards(deltaFocusPoint, intendDFP, deltaDFP);
+//                Debug.Log("current DFP: " + deltaFocusPoint);
+
+                float disSize = Mathf.Abs(size - intendSize);
+                deltaSize = disSize / timeD * Time.deltaTime * 2f; // * multiplier
+                size = Mathf.MoveTowards(size, intendSize, deltaSize);
             }
         }
     }
