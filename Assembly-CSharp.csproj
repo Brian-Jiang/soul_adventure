@@ -91,6 +91,7 @@
     <Compile Include="Assets\Scripts\LevelController.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\TriggerController.cs" />
+    <Compile Include="Assets\Scripts\TriggerEditor.cs" />
     <None Include="Assets\LeanTouch\Examples\Fonts\OFL.txt" />
     <None Include="Assets\LeanTouch\Examples\Shaders\Skybox.shader" />
     <None Include="Assets\LeanTouch\Examples\Shaders\Smooth.shader" />

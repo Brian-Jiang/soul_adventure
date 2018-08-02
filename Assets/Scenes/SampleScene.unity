@@ -852,7 +852,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &321502926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -867,9 +867,9 @@ MonoBehaviour:
   changePlayerStatus: 0
   changeCameraStatus: 1
   playerStatusConverter:
-    intendedSpeed: 4
-    intendedRotationalSpeed: 130
-    time: 1
+    intendedSpeed: 6.4
+    intendedRotationalSpeed: 31.2
+    time: 3.93
   cameraStatusConverter:
     intendedDFP: {x: 8, y: 0}
     intendedSize: 18
@@ -1534,12 +1534,12 @@ MonoBehaviour:
   changePlayerStatus: 1
   changeCameraStatus: 0
   playerStatusConverter:
-    intendedSpeed: 0.5
-    intendedRotationalSpeed: 5
-    time: 2
+    intendedSpeed: 9.4
+    intendedRotationalSpeed: 104
+    time: 4.69
   cameraStatusConverter:
     intendedDFP: {x: 6, y: 6}
-    intendedSize: 18
+    intendedSize: 17.3
     time: 8
 --- !u!61 &1659790104
 BoxCollider2D:
