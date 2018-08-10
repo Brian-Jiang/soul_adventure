@@ -4,12 +4,25 @@ using UnityEngine;
 using DataTypes;
 
 public class PlayerController : MonoBehaviour {
+//	public AnimationCurve leftRotate;
+//	public AnimationCurve rightRotate;
 
 	private CameraController cameraController;
 	private PlayerStatus playerStatus;
 	private CameraStatus cameraStatus;
 	private LevelController levelController;
 	private int rota;
+//	private bool onLeft;
+//	private bool onRight;
+	
+//	public void Swipe(bool left) {
+//		if (left) {
+//			onLeft = true;
+//		}
+//		else {
+//			onRight = true;
+//		}
+//	}
 
 	private void OnEnable() {
 		levelController = (LevelController) FindObjectOfType(typeof(LevelController));

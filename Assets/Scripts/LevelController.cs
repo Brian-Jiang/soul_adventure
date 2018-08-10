@@ -33,6 +33,8 @@ public class LevelController : MonoBehaviour {
 		}
 	}
 
+	
+
 	public int GetRotationDir() {
 		return rota;
 	}
