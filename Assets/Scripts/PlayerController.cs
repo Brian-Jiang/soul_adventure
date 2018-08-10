@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour {
 			var controller = other.gameObject.GetComponent<TriggerController>();
 			controller.UpdatePlayerStatus(ref playerStatus);
 			cameraController.Trigger(controller);
-			other.gameObject.SetActive(false);
+			controller.IsTriggered();
 		}
 	}
 }
