@@ -3,8 +3,74 @@
   <component name="ContentModelStore">
     <e p="C:\Users\Brian\.Rider2018.1\system\resharper-host\Local\Transient\ReSharperHost\v12\SolutionCaches\_soul_adventure.737336131.00" t="ExcludeRecursive" />
     <e p="D:\UnityProjects\soul_adventure" t="IncludeRecursive">
+      <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="BayatGames" t="Include">
+          <e p="SaveGameFree" t="Include">
+            <e p="Documentation" t="Include">
+              <e p="Save Game Free Documentation - Plain Text Version.txt" t="Include" />
+            </e>
+            <e p="Editor" t="Include">
+              <e p="Tests" t="Include">
+                <e p="SaveGameTests.cs" t="Include" />
+              </e>
+            </e>
+            <e p="Examples" t="Include">
+              <e p="Auto Save" t="Include">
+                <e p="ExampleMoveObject.cs" t="Include" />
+              </e>
+              <e p="Save Custom" t="Include">
+                <e p="ExampleSaveCustom.cs" t="Include" />
+              </e>
+              <e p="Save Position" t="Include">
+                <e p="ExampleSavePosition.cs" t="Include" />
+              </e>
+              <e p="Save Rotation" t="Include">
+                <e p="ExampleSaveRotation.cs" t="Include" />
+              </e>
+              <e p="Save Scale" t="Include">
+                <e p="ExampleSaveScale.cs" t="Include" />
+              </e>
+              <e p="Save Web" t="Include">
+                <e p="ExampleSaveWeb.cs" t="Include" />
+              </e>
+              <e p="Shared" t="Include">
+                <e p="Scripts" t="Include">
+                  <e p="SerializerDropdown.cs" t="Include" />
+                </e>
+              </e>
+            </e>
+            <e p="Plugins" t="Include">
+              <e p="FullSerializer.xml" t="Include" />
+            </e>
+            <e p="Readme.txt" t="Include" />
+            <e p="Scripts" t="Include">
+              <e p="Encoders" t="Include">
+                <e p="ISaveGameEncoder.cs" t="Include" />
+                <e p="SaveGameSimpleEncoder.cs" t="Include" />
+              </e>
+              <e p="SaveGame.cs" t="Include" />
+              <e p="SaveGameAuto.cs" t="Include" />
+              <e p="SaveGameWeb.cs" t="Include" />
+              <e p="Serializers" t="Include">
+                <e p="ISaveGameSerializer.cs" t="Include" />
+                <e p="SaveGameBinarySerializer.cs" t="Include" />
+                <e p="SaveGameJsonSerializer.cs" t="Include" />
+                <e p="SaveGameXmlSerializer.cs" t="Include" />
+              </e>
+              <e p="Types" t="Include">
+                <e p="Color32Save.cs" t="Include" />
+                <e p="ColorSave.cs" t="Include" />
+                <e p="MeshSave.cs" t="Include" />
+                <e p="QuaternionSave.cs" t="Include" />
+                <e p="Vector2Save.cs" t="Include" />
+                <e p="Vector3Save.cs" t="Include" />
+                <e p="Vector4Save.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+        </e>
         <e p="LeanTouch" t="Include">
           <e p="Examples" t="Include">
             <e p="Fonts" t="Include">
@@ -55,6 +121,7 @@
           <e p="CameraController.cs" t="Include" />
           <e p="DataTypes.cs" t="Include" />
           <e p="LevelController.cs" t="Include" />
+          <e p="LevelControllerEditor.cs" t="Include" />
           <e p="PlayerController.cs" t="Include" />
           <e p="TriggerController.cs" t="Include" />
           <e p="TriggerEditor.cs" t="Include" />

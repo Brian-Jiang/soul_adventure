@@ -55,6 +55,29 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\BayatGames\SaveGameFree\Examples\Auto Save\ExampleMoveObject.cs" />
+    <Compile Include="Assets\BayatGames\SaveGameFree\Examples\Save Custom\ExampleSaveCustom.cs" />
+    <Compile Include="Assets\BayatGames\SaveGameFree\Examples\Save Position\ExampleSavePosition.cs" />
+    <Compile Include="Assets\BayatGames\SaveGameFree\Examples\Save Rotation\ExampleSaveRotation.cs" />
+    <Compile Include="Assets\BayatGames\SaveGameFree\Examples\Save Scale\ExampleSaveScale.cs" />
+    <Compile Include="Assets\BayatGames\SaveGameFree\Examples\Save Web\ExampleSaveWeb.cs" />
+    <Compile Include="Assets\BayatGames\SaveGameFree\Examples\Shared\Scripts\SerializerDropdown.cs" />
+    <Compile Include="Assets\BayatGames\SaveGameFree\Scripts\Encoders\ISaveGameEncoder.cs" />
+    <Compile Include="Assets\BayatGames\SaveGameFree\Scripts\Encoders\SaveGameSimpleEncoder.cs" />
+    <Compile Include="Assets\BayatGames\SaveGameFree\Scripts\SaveGame.cs" />
+    <Compile Include="Assets\BayatGames\SaveGameFree\Scripts\SaveGameAuto.cs" />
+    <Compile Include="Assets\BayatGames\SaveGameFree\Scripts\SaveGameWeb.cs" />
+    <Compile Include="Assets\BayatGames\SaveGameFree\Scripts\Serializers\ISaveGameSerializer.cs" />
+    <Compile Include="Assets\BayatGames\SaveGameFree\Scripts\Serializers\SaveGameBinarySerializer.cs" />
+    <Compile Include="Assets\BayatGames\SaveGameFree\Scripts\Serializers\SaveGameJsonSerializer.cs" />
+    <Compile Include="Assets\BayatGames\SaveGameFree\Scripts\Serializers\SaveGameXmlSerializer.cs" />
+    <Compile Include="Assets\BayatGames\SaveGameFree\Scripts\Types\Color32Save.cs" />
+    <Compile Include="Assets\BayatGames\SaveGameFree\Scripts\Types\ColorSave.cs" />
+    <Compile Include="Assets\BayatGames\SaveGameFree\Scripts\Types\MeshSave.cs" />
+    <Compile Include="Assets\BayatGames\SaveGameFree\Scripts\Types\QuaternionSave.cs" />
+    <Compile Include="Assets\BayatGames\SaveGameFree\Scripts\Types\Vector2Save.cs" />
+    <Compile Include="Assets\BayatGames\SaveGameFree\Scripts\Types\Vector3Save.cs" />
+    <Compile Include="Assets\BayatGames\SaveGameFree\Scripts\Types\Vector4Save.cs" />
     <Compile Include="Assets\LeanTouch\Examples\Scripts\LeanCameraMove.cs" />
     <Compile Include="Assets\LeanTouch\Examples\Scripts\LeanCameraZoom.cs" />
     <Compile Include="Assets\LeanTouch\Examples\Scripts\LeanCanvasArrow.cs" />
@@ -89,12 +112,16 @@
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\DataTypes.cs" />
     <Compile Include="Assets\Scripts\LevelController.cs" />
+    <Compile Include="Assets\Scripts\LevelControllerEditor.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\TriggerController.cs" />
     <Compile Include="Assets\Scripts\TriggerEditor.cs" />
+    <None Include="Assets\BayatGames\SaveGameFree\Readme.txt" />
     <None Include="Assets\LeanTouch\Examples\Fonts\OFL.txt" />
     <None Include="Assets\LeanTouch\Examples\Shaders\Skybox.shader" />
     <None Include="Assets\LeanTouch\Examples\Shaders\Smooth.shader" />
+    <None Include="Assets\BayatGames\SaveGameFree\Documentation\Save Game Free Documentation - Plain Text Version.txt" />
+    <None Include="Assets\BayatGames\SaveGameFree\Plugins\FullSerializer.xml" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>D:/UnityProjects/soul_adventure/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
@@ -310,6 +337,9 @@
     </Reference>
     <Reference Include="UnityEngine.StandardEvents">
       <HintPath>C:/Users/Brian/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.13/UnityEngine.StandardEvents.dll</HintPath>
+    </Reference>
+    <Reference Include="FullSerializer">
+      <HintPath>D:/UnityProjects/soul_adventure/Assets/BayatGames/SaveGameFree/Plugins/FullSerializer.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>D:/Unity/Editor/Data/MonoBleedingEdge/lib/mono/unity/mscorlib.dll</HintPath>

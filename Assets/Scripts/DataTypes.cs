@@ -103,4 +103,17 @@ namespace DataTypes {
         public float intendedSize;
         public float time; //   second
     }
+
+    [Serializable]
+    public struct PlayerSaveInfo {
+        public Vector2 savePositionDelta;
+        public float saveOrientation;
+        public PlayerStatus saveStatus;
+
+        public void init(Transform trans, PlayerStatus status) {
+            savePositionDelta = (Vector2) trans.position;
+            saveOrientation = trans.rotation.eulerAngles.z;
+            saveStatus.CopyFrom(status);
+        }
+    }
 }
