@@ -41,12 +41,17 @@ public class PlayerController : MonoBehaviour {
 	{
 		if (other.gameObject.CompareTag("Wall")) {
 			levelController.PlayerDie();
-		}
-		else if(other.CompareTag("Trigger")) {
+		} else if(other.CompareTag("Trigger")) {
 			var controller = other.gameObject.GetComponent<TriggerController>();
 			controller.UpdatePlayerStatus(ref playerStatus);
 			cameraController.Trigger(controller);
 			controller.IsTriggered();
+		} else if (other.CompareTag("blue_pt")) {
+			levelController.CollectPt('b');
+			Destroy(other.gameObject);
+		} else if (other.CompareTag("orange_pt")) {
+			levelController.CollectPt('o');
+			Destroy(other.gameObject);
 		}
 	}
 }

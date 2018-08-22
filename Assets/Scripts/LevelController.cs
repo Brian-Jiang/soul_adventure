@@ -12,6 +12,9 @@ public class LevelController : MonoBehaviour {
 	public Transform playerStartTrans;
 
 	private int rota = 0;
+
+	private int bluePts;
+	private int orangePts;
 	private PlayerSaveInfo lastSave;
 
 	private void Start() {
@@ -44,4 +47,28 @@ public class LevelController : MonoBehaviour {
 	public int GetRotationDir() {
 		return rota;
 	}
+
+	public void CollectPt(char color) {
+		switch (color) {
+				case 'b':
+					Debug.Log("Collect blue pt");
+					bluePts++;
+					break;
+				case 'o':
+					Debug.Log("Collect orange pt");
+					break;
+		}
+	}
+
+#if DEBUG
+	private void OnGUI() {
+    		GUI.skin.box.normal.textColor = Color.black;
+    		GUI.skin.box.font = Font.CreateDynamicFontFromOSFont("Tahoma Regular",15);
+    //		Debug.Log(Font.CreateDynamicFontFromOSFont("Tahoma Regular",10));
+    //		Debug.Log("Font name: " + GUI.skin.box.font.name);
+    //		GUI.skin.box.fontSize = 40;
+    		GUI.Box(new Rect(10f, 10f, 200f, 100f), "blue pts: " + bluePts);
+    	}
+#endif
+	
 }

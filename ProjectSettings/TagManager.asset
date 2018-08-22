@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Wall
   - Trigger
+  - blue_pt
+  - orange_pt
   layers:
   - Default
   - TransparentFX
