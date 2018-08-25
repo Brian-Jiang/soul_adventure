@@ -8,9 +8,135 @@
     <e p="D:\UnityProjects\soul_adventure" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="BayatGames" t="Include">
+          <e p="SaveGameFree" t="Include">
+            <e p="Documentation" t="Include">
+              <e p="Save Game Free Documentation - Plain Text Version.txt" t="Include" />
+            </e>
+            <e p="Editor" t="Include">
+              <e p="Tests" t="Include">
+                <e p="SaveGameTests.cs" t="Include" />
+              </e>
+            </e>
+            <e p="Examples" t="Include">
+              <e p="Auto Save" t="Include">
+                <e p="ExampleMoveObject.cs" t="Include" />
+              </e>
+              <e p="Save Custom" t="Include">
+                <e p="ExampleSaveCustom.cs" t="Include" />
+              </e>
+              <e p="Save Position" t="Include">
+                <e p="ExampleSavePosition.cs" t="Include" />
+              </e>
+              <e p="Save Rotation" t="Include">
+                <e p="ExampleSaveRotation.cs" t="Include" />
+              </e>
+              <e p="Save Scale" t="Include">
+                <e p="ExampleSaveScale.cs" t="Include" />
+              </e>
+              <e p="Save Web" t="Include">
+                <e p="ExampleSaveWeb.cs" t="Include" />
+              </e>
+              <e p="Shared" t="Include">
+                <e p="Scripts" t="Include">
+                  <e p="SerializerDropdown.cs" t="Include" />
+                </e>
+              </e>
+            </e>
+            <e p="Plugins" t="Include">
+              <e p="FullSerializer.xml" t="Include" />
+            </e>
+            <e p="Readme.txt" t="Include" />
+            <e p="Scripts" t="Include">
+              <e p="Encoders" t="Include">
+                <e p="ISaveGameEncoder.cs" t="Include" />
+                <e p="SaveGameSimpleEncoder.cs" t="Include" />
+              </e>
+              <e p="SaveGame.cs" t="Include" />
+              <e p="SaveGameAuto.cs" t="Include" />
+              <e p="SaveGameWeb.cs" t="Include" />
+              <e p="Serializers" t="Include">
+                <e p="ISaveGameSerializer.cs" t="Include" />
+                <e p="SaveGameBinarySerializer.cs" t="Include" />
+                <e p="SaveGameJsonSerializer.cs" t="Include" />
+                <e p="SaveGameXmlSerializer.cs" t="Include" />
+              </e>
+              <e p="Types" t="Include">
+                <e p="Color32Save.cs" t="Include" />
+                <e p="ColorSave.cs" t="Include" />
+                <e p="MeshSave.cs" t="Include" />
+                <e p="QuaternionSave.cs" t="Include" />
+                <e p="Vector2Save.cs" t="Include" />
+                <e p="Vector3Save.cs" t="Include" />
+                <e p="Vector4Save.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+        </e>
+        <e p="LeanTouch" t="Include">
+          <e p="Examples" t="Include">
+            <e p="Fonts" t="Include">
+              <e p="OFL.txt" t="Include" />
+            </e>
+            <e p="Scripts" t="Include">
+              <e p="LeanCameraMove.cs" t="Include" />
+              <e p="LeanCameraZoom.cs" t="Include" />
+              <e p="LeanCanvasArrow.cs" t="Include" />
+              <e p="LeanDestroy.cs" t="Include" />
+              <e p="LeanFingerDown.cs" t="Include" />
+              <e p="LeanFingerHeld.cs" t="Include" />
+              <e p="LeanFingerLine.cs" t="Include" />
+              <e p="LeanFingerSet.cs" t="Include" />
+              <e p="LeanFingerSwipe.cs" t="Include" />
+              <e p="LeanFingerTap.cs" t="Include" />
+              <e p="LeanFingerTrail.cs" t="Include" />
+              <e p="LeanFingerUp.cs" t="Include" />
+              <e p="LeanOpenUrl.cs" t="Include" />
+              <e p="LeanPath.cs" t="Include" />
+              <e p="LeanPlane.cs" t="Include" />
+              <e p="LeanRotate.cs" t="Include" />
+              <e p="LeanScale.cs" t="Include" />
+              <e p="LeanScreenDepth.cs" t="Include" />
+              <e p="LeanSelect.cs" t="Include" />
+              <e p="LeanSelectable.cs" t="Include" />
+              <e p="LeanSelectableBehaviour.cs" t="Include" />
+              <e p="LeanSelectableGraphicColor.cs" t="Include" />
+              <e p="LeanSelectableRendererColor.cs" t="Include" />
+              <e p="LeanSelectableSpriteRendererColor.cs" t="Include" />
+              <e p="LeanSpawnAt.cs" t="Include" />
+              <e p="LeanTouchEvents.cs" t="Include" />
+              <e p="LeanTranslate.cs" t="Include" />
+            </e>
+            <e p="Shaders" t="Include">
+              <e p="Skybox.shader" t="Include" />
+              <e p="Smooth.shader" t="Include" />
+            </e>
+          </e>
+          <e p="Scripts" t="Include">
+            <e p="LeanFinger.cs" t="Include" />
+            <e p="LeanGesture.cs" t="Include" />
+            <e p="LeanSnapshot.cs" t="Include" />
+            <e p="LeanTouch.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Scripts" t="Include">
+          <e p="CameraController.cs" t="Include" />
+          <e p="DataTypes.cs" t="Include" />
+          <e p="LevelController.cs" t="Include" />
+          <e p="LevelControllerEditor.cs" t="Include" />
+          <e p="PlayerController.cs" t="Include" />
+          <e p="TriggerController.cs" t="Include" />
+          <e p="TriggerEditor.cs" t="Include" />
+        </e>
+      </e>
       <e p="Library" t="ExcludeRecursive" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="packages" t="ExcludeRecursive" />
       <e p="soul_adventure.sln" t="IncludeFlat" />
-      <e p="Temp" t="ExcludeRecursive" />
+      <e p="Temp" t="ExcludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+      </e>
     </e>
   </component>
 </project>
