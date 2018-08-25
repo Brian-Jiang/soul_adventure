@@ -45,6 +45,7 @@ public class PlayerController : MonoBehaviour {
 			var controller = other.gameObject.GetComponent<TriggerController>();
 			controller.UpdatePlayerStatus(ref playerStatus);
 			cameraController.Trigger(controller);
+			controller.PlayAnimations();
 			controller.IsTriggered();
 		} else if (other.CompareTag("blue_pt")) {
 			levelController.CollectPt('b');
