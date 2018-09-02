@@ -108,12 +108,21 @@ namespace DataTypes {
     public struct PlayerSaveInfo {
         public Vector2 savePositionDelta;
         public float saveOrientation;
-        public PlayerStatus saveStatus;
 
-        public void init(Transform trans, PlayerStatus status) {
-            savePositionDelta = (Vector2) trans.position;
-            saveOrientation = trans.rotation.eulerAngles.z;
+        private bool active;
+        private PlayerStatus saveStatus;
+
+        public void Save(PlayerStatus status) {
             saveStatus.CopyFrom(status);
+            active = true;
+        }
+
+        public void Reset() {
+            active = false;
+        }
+
+        public bool IsActive() {
+            return active;
         }
     }
 }

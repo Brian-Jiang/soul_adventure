@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DataTypes;
@@ -46,6 +46,7 @@ public class PlayerController : MonoBehaviour {
 			controller.UpdatePlayerStatus(ref playerStatus);
 			cameraController.Trigger(controller);
 			controller.PlayAnimations();
+			controller.SaveProgress(playerStatus);
 			controller.IsTriggered();
 		} else if (other.CompareTag("blue_pt")) {
 			levelController.CollectPt('b');

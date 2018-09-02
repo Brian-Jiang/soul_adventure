@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using DataTypes;
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class LevelController : MonoBehaviour {
 	public PlayerStatus playerStartStatus;
 	public CameraStatus cameraStartStatus;
 	public CameraController cameraController;
+	public GameObject starter;
 	
 	public Transform playerStartTrans;
 
@@ -15,10 +17,19 @@ public class LevelController : MonoBehaviour {
 
 	private int bluePts;
 	private int orangePts;
+	private GameObject[] triggers;
 	private PlayerSaveInfo lastSave;
+	
+	GUIContent content;
 
 	private void Start() {
-		lastSave.init(playerStartTrans, playerStartStatus);
+		triggers = GameObject.FindGameObjectsWithTag("Trigger");
+//		lastSave.init(playerStartTrans, playerStartStatus);
+		content = new GUIContent("blue pts: " + bluePts);
+	}
+
+	private void Update() {
+		Debug.Log(FindLastActiveSave().name);
 	}
 
 	public void PlayerDie() {
@@ -60,15 +71,27 @@ public class LevelController : MonoBehaviour {
 		}
 	}
 
-#if DEBUG
+	private GameObject FindLastActiveSave() {
+		foreach (var trigger in triggers) {
+			if (trigger.GetComponent<TriggerController>().IsActiveSave()) {
+				return trigger;
+			}
+		}
+
+		return starter;
+	}
+
+#if UNITY_EDITOR
 	private void OnGUI() {
-    		GUI.skin.box.normal.textColor = Color.black;
-    		GUI.skin.box.font = Font.CreateDynamicFontFromOSFont("Tahoma Regular",15);
-    //		Debug.Log(Font.CreateDynamicFontFromOSFont("Tahoma Regular",10));
-    //		Debug.Log("Font name: " + GUI.skin.box.font.name);
-    //		GUI.skin.box.fontSize = 40;
-    		GUI.Box(new Rect(10f, 10f, 200f, 100f), "blue pts: " + bluePts);
-    	}
+		GUI.skin.box.normal.textColor = Color.black;
+		GUI.skin.box.font = Font.CreateDynamicFontFromOSFont("Tahoma Regular", 15);
+//		GUI.skin.box.fontSize = 5;
+		//		Debug.Log(Font.CreateDynamicFontFromOSFont("Tahoma Regular",10));
+		//		Debug.Log("Font name: " + GUI.skin.box.font.name);
+		//		GUI.skin.box.fontSize = 40;
+		GUI.Box(new Rect(10f, 10f, 200f, 100f), content);
+		Debug.Log(content);
+	}
 #endif
 	
 }
