@@ -1,8 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using DataTypes;
 using JetBrains.Annotations;
+using UnityEditor;
 using UnityEngine;
 
 public class LevelController : MonoBehaviour {
@@ -12,6 +14,7 @@ public class LevelController : MonoBehaviour {
 	public GameObject starter;
 	
 	public Transform playerStartTrans;
+	public Animator UIAnimator;
 
 	private int rota = 0;
 
@@ -19,13 +22,20 @@ public class LevelController : MonoBehaviour {
 	private int orangePts;
 	private GameObject[] triggers;
 	private PlayerSaveInfo lastSave;
+
+//	public static bool s_drawAllGizmos;
+//	public bool drawAllGizmos;
 	
-	GUIContent content;
+	GUIContent debugContent;
+
+	private void Awake() {
+//		s_drawAllGizmos = drawAllGizmos;
+	}
 
 	private void Start() {
 		triggers = GameObject.FindGameObjectsWithTag("Trigger");
 //		lastSave.init(playerStartTrans, playerStartStatus);
-		content = new GUIContent("blue pts: " + bluePts);
+		debugContent = new GUIContent("blue pts: " + bluePts + "\norange pts: " + orangePts);
 	}
 
 	private void Update() {
@@ -59,6 +69,16 @@ public class LevelController : MonoBehaviour {
 		return rota;
 	}
 
+	public void PauseGame() {
+		Time.timeScale = 0;
+		UIAnimator.SetTrigger("Pause");
+	}
+	
+	public void ResumeGame() {
+		Time.timeScale = 1;
+		UIAnimator.SetTrigger("Resume");
+	}
+
 	public void CollectPt(char color) {
 		switch (color) {
 				case 'b':
@@ -83,14 +103,18 @@ public class LevelController : MonoBehaviour {
 
 #if UNITY_EDITOR
 	private void OnGUI() {
+//		GUI.skin.label.fontSize = 20;
 		GUI.skin.box.normal.textColor = Color.black;
-		GUI.skin.box.font = Font.CreateDynamicFontFromOSFont("Tahoma Regular", 15);
+		GUI.skin.box.font = Font.CreateDynamicFontFromOSFont("Tahoma Regular", 20);
+//		GUI.skin.box.font = new Font();
+//		Handles.Label(new Vector3(10f, 10f), "Hello");
 //		GUI.skin.box.fontSize = 5;
 		//		Debug.Log(Font.CreateDynamicFontFromOSFont("Tahoma Regular",10));
 		//		Debug.Log("Font name: " + GUI.skin.box.font.name);
 		//		GUI.skin.box.fontSize = 40;
-		GUI.Box(new Rect(10f, 10f, 200f, 100f), content);
-		Debug.Log(content);
+		GUI.Box(new Rect(10f, 10f, 200f, 200f), debugContent);
+//		GUI.Label(new Rect(10, 10, 100, 20), "Hello World!");
+//		Debug.Log(debugContent);
 	}
 #endif
 	

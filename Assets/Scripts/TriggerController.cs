@@ -59,9 +59,11 @@ public class TriggerController : MonoBehaviour {
 #if UNITY_EDITOR
 
     private void OnDrawGizmos() {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireCube(transform.position, transform.localScale);
-        Handles.Label(transform.position - transform.localScale / 2, gameObject.name);
+//        if (LevelController.s_drawAllGizmos) {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireCube(transform.position, transform.localScale);
+            Handles.Label(transform.position - transform.localScale / 2, gameObject.name);
+//        }
     }
 
 #endif
