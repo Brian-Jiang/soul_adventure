@@ -54,6 +54,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\BayatGames\SaveGameFree\Editor\Tests\SaveGameTests.cs" />
+    <Compile Include="Assets\ParadoxNotion\FlowCanvas\Framework\Design\Editor\Commands.cs" />
+    <Compile Include="Assets\ParadoxNotion\FlowCanvas\Framework\Design\Editor\Inspectors\BlackboardInspector.cs" />
+    <Compile Include="Assets\ParadoxNotion\FlowCanvas\Framework\Design\Editor\Inspectors\GlobalBlackboardInspector.cs" />
+    <Compile Include="Assets\ParadoxNotion\FlowCanvas\Framework\Design\Editor\Inspectors\GraphInspector.cs" />
+    <Compile Include="Assets\ParadoxNotion\FlowCanvas\Framework\Design\Editor\Inspectors\GraphOwnerInspector.cs" />
+    <Compile Include="Assets\ParadoxNotion\FlowCanvas\Framework\Design\Editor\Windows\ExternalInspectorWindow.cs" />
+    <Compile Include="Assets\ParadoxNotion\FlowCanvas\Framework\Design\Editor\Windows\GraphConsole.cs" />
+    <Compile Include="Assets\ParadoxNotion\FlowCanvas\Framework\Design\Editor\Windows\GraphEditor.cs" />
+    <Compile Include="Assets\ParadoxNotion\FlowCanvas\Framework\Design\Editor\Windows\GraphEditor_Events.cs" />
+    <Compile Include="Assets\ParadoxNotion\FlowCanvas\Framework\Design\Editor\Windows\GraphEditor_Panels.cs" />
+    <Compile Include="Assets\ParadoxNotion\FlowCanvas\Framework\Design\Editor\Windows\GraphEditor_Toolbar.cs" />
+    <Compile Include="Assets\ParadoxNotion\FlowCanvas\Framework\Design\Editor\Windows\QuickPopup.cs" />
+    <Compile Include="Assets\ParadoxNotion\FlowCanvas\Framework\Design\Editor\Windows\TaskWizardWindow.cs" />
+    <Compile Include="Assets\ParadoxNotion\FlowCanvas\Framework\Design\Editor\Windows\WelcomeWindow.cs" />
+    <Compile Include="Assets\ParadoxNotion\FlowCanvas\Module\Design\Editor\Commands.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>D:/UnityProjects/soul_adventure/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
@@ -329,6 +344,33 @@
     </Reference>
     <Reference Include="UnityEngine.StandardEvents">
       <HintPath>C:/Users/Brian/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.13/UnityEngine.StandardEvents.dll</HintPath>
+    </Reference>
+    <Reference Include="AsyncBridge.Net35">
+      <HintPath>D:/UnityProjects/soul_adventure/Assets/Plugins/GitHub/Editor/AsyncBridge.Net35.dll</HintPath>
+    </Reference>
+    <Reference Include="GitHub.Api">
+      <HintPath>D:/UnityProjects/soul_adventure/Assets/Plugins/GitHub/Editor/GitHub.Api.dll</HintPath>
+    </Reference>
+    <Reference Include="GitHub.Unity">
+      <HintPath>D:/UnityProjects/soul_adventure/Assets/Plugins/GitHub/Editor/GitHub.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="sfw.net">
+      <HintPath>D:/UnityProjects/soul_adventure/Assets/Plugins/GitHub/Editor/sfw.net.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>D:/UnityProjects/soul_adventure/Assets/Plugins/GitHub/Editor/ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading">
+      <HintPath>D:/UnityProjects/soul_adventure/Assets/Plugins/GitHub/Editor/System.Threading.dll</HintPath>
+    </Reference>
+    <Reference Include="GitHub.Logging">
+      <HintPath>D:/UnityProjects/soul_adventure/Assets/Plugins/GitHub/Editor/GitHub.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="ReadOnlyCollectionsInterfaces">
+      <HintPath>D:/UnityProjects/soul_adventure/Assets/Plugins/GitHub/Editor/ReadOnlyCollectionsInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Posix">
+      <HintPath>D:/UnityProjects/soul_adventure/Assets/Plugins/GitHub/Editor/Mono.Posix.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>D:/Unity/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
