@@ -26,7 +26,7 @@ public class LevelController : MonoBehaviour {
 //	public static bool s_drawAllGizmos;
 //	public bool drawAllGizmos;
 	
-	GUIContent debugContent;
+
 
 	private void Awake() {
 //		s_drawAllGizmos = drawAllGizmos;
@@ -35,11 +35,10 @@ public class LevelController : MonoBehaviour {
 	private void Start() {
 		triggers = GameObject.FindGameObjectsWithTag("Trigger");
 //		lastSave.init(playerStartTrans, playerStartStatus);
-		debugContent = new GUIContent("blue pts: " + bluePts + "\norange pts: " + orangePts);
 	}
 
 	private void Update() {
-		Debug.Log(FindLastActiveSave().name);
+//		Debug.Log(FindLastActiveSave().name);
 	}
 
 	public void PlayerDie() {
@@ -69,16 +68,6 @@ public class LevelController : MonoBehaviour {
 		return rota;
 	}
 
-	public void PauseGame() {
-		Time.timeScale = 0;
-		UIAnimator.SetTrigger("Pause");
-	}
-	
-	public void ResumeGame() {
-		Time.timeScale = 1;
-		UIAnimator.SetTrigger("Resume");
-	}
-
 	public void CollectPt(char color) {
 		switch (color) {
 				case 'b':
@@ -87,8 +76,17 @@ public class LevelController : MonoBehaviour {
 					break;
 				case 'o':
 					Debug.Log("Collect orange pt");
+					orangePts++;
 					break;
 		}
+	}
+
+	public int GetBluePts() {
+		return bluePts;
+	}
+
+	public int GetOrangePts() {
+		return orangePts;
 	}
 
 	private GameObject FindLastActiveSave() {
@@ -100,22 +98,4 @@ public class LevelController : MonoBehaviour {
 
 		return starter;
 	}
-
-#if UNITY_EDITOR
-	private void OnGUI() {
-//		GUI.skin.label.fontSize = 20;
-		GUI.skin.box.normal.textColor = Color.black;
-		GUI.skin.box.font = Font.CreateDynamicFontFromOSFont("Tahoma Regular", 20);
-//		GUI.skin.box.font = new Font();
-//		Handles.Label(new Vector3(10f, 10f), "Hello");
-//		GUI.skin.box.fontSize = 5;
-		//		Debug.Log(Font.CreateDynamicFontFromOSFont("Tahoma Regular",10));
-		//		Debug.Log("Font name: " + GUI.skin.box.font.name);
-		//		GUI.skin.box.fontSize = 40;
-		GUI.Box(new Rect(10f, 10f, 200f, 200f), debugContent);
-//		GUI.Label(new Rect(10, 10, 100, 20), "Hello World!");
-//		Debug.Log(debugContent);
-	}
-#endif
-	
 }

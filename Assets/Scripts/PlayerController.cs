@@ -24,6 +24,10 @@ public class PlayerController : MonoBehaviour {
 //		}
 //	}
 
+	public PlayerStatus GetPlayerStatus() {
+		return playerStatus;
+	}
+
 	private void OnEnable() {
 		levelController = (LevelController) FindObjectOfType(typeof(LevelController));
 		cameraController = (CameraController) FindObjectOfType(typeof(CameraController));
