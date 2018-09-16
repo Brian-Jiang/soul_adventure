@@ -4,6 +4,7 @@
     <e p="C:\Users\Brian\.Rider2018.2\system\extResources" t="IncludeRecursive" />
     <e p="C:\Users\Brian\.Rider2018.2\system\resharper-host\Local\Transient\ReSharperHost\v182\SolutionCaches\_soul_adventure.737336131.00" t="ExcludeRecursive" />
     <e p="D:\UnityProjects\soul_adventure" t="IncludeRecursive">
+      <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
@@ -566,6 +567,15 @@
               <e p="Ports.cs" t="Include" />
               <e p="TypeConverter.cs" t="Include" />
               <e p="Wild.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Plugins" t="Include">
+          <e p="GitHub" t="Include">
+            <e p="Editor" t="Include">
+              <e p="credits.txt" t="Include" />
+              <e p="eula.txt" t="Include" />
+              <e p="ExtensionLoader.cs" t="Include" />
             </e>
           </e>
         </e>

@@ -3,7 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using DataTypes;
+using FlowCanvas;
 using JetBrains.Annotations;
+using NodeCanvas.Framework;
 using UnityEditor;
 using UnityEngine;
 
@@ -13,8 +15,8 @@ public class LevelController : MonoBehaviour {
 	public CameraController cameraController;
 	public GameObject starter;
 	
-	public Transform playerStartTrans;
-	public Animator UIAnimator;
+//	public Transform playerStartTrans;
+//	public Animator UIAnimator;
 
 	private int rota = 0;
 
@@ -42,8 +44,9 @@ public class LevelController : MonoBehaviour {
 	}
 
 	public void PlayerDie() {
-		Time.timeScale = 0;
-		cameraController.PlayerDieAnimation();
+		GraphOwner.SendGlobalEvent("PlayerDie");
+//		Time.timeScale = 0;
+//		cameraController.PlayerDieAnimation();
 	}
 
 	public void OnTouchEnter(bool left) {
@@ -89,6 +92,10 @@ public class LevelController : MonoBehaviour {
 		return orangePts;
 	}
 
+	public string GetLastSaveName() {
+		return FindLastActiveSave().name;
+	}
+
 	private GameObject FindLastActiveSave() {
 		foreach (var trigger in triggers) {
 			if (trigger.GetComponent<TriggerController>().IsActiveSave()) {
@@ -99,3 +106,12 @@ public class LevelController : MonoBehaviour {
 		return starter;
 	}
 }
+//
+//[ExecuteInEditMode]
+//public class NamingProcess : MonoBehaviour {
+//	public static int triggerCount = 0;
+//
+//	public static void IncrementTrigger() {
+//		triggerCount += 1;
+//	}
+//}

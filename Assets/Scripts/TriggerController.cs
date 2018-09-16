@@ -59,12 +59,39 @@ public class TriggerController : MonoBehaviour {
 #if UNITY_EDITOR
 
     private void OnDrawGizmos() {
-//        if (LevelController.s_drawAllGizmos) {
-            Gizmos.color = Color.yellow;
-            Gizmos.DrawWireCube(transform.position, transform.localScale);
-            Handles.Label(transform.position - transform.localScale / 2, gameObject.name);
-//        }
+
+        Gizmos.color = Color.yellow;
+        Matrix4x4 cubeTransform = Matrix4x4.TRS(transform.position, transform.rotation, transform.localScale);
+        Matrix4x4 oldGizmosMatrix = Gizmos.matrix;
+        Gizmos.matrix *= cubeTransform;
+        Gizmos.DrawWireCube(Vector3.zero, Vector3.one);
+        Gizmos.matrix = oldGizmosMatrix;
+        
+        Handles.Label(transform.position - transform.localScale / 2, gameObject.name);
+
     }
 
 #endif
 }
+
+//[ExecuteInEditMode]
+//public class TriggerNaming : MonoBehaviour {
+//    private void OnDisable() {
+//        Debug.Log("destroy");
+//    }
+//}
+//
+//
+//[CustomEditor(typeof(TriggerNaming))]
+//public class ObjectChecker : Editor
+//{
+//    public void OnDestroy()
+//    {
+//        if ( Application.isEditor )
+//        {
+//            if (((ObjectChecker) target) == null) {
+//                Debug.Log("destroy");
+//            }
+//        }
+//    }
+//}
