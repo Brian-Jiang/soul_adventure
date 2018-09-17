@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour {
 	private void OnEnable() {
 		levelController = (LevelController) FindObjectOfType(typeof(LevelController));
 		cameraController = (CameraController) FindObjectOfType(typeof(CameraController));
-		playerStatus.CopyFrom(levelController.playerStartStatus);
+		playerStatus.Init(levelController.playerStartStatus);
 	}
 
 	private void Update() {

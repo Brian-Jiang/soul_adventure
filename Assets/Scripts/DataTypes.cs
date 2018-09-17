@@ -4,9 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace DataTypes {
-    public enum colliderType {
-        Player, Wall, Point
-    }
 
     public enum CurveStyle {
         Instantly, Linear, EaseInOut
@@ -15,12 +12,8 @@ namespace DataTypes {
     [Serializable]
     public struct PlayerStatus {
         public float speed;
-//        public float intendSpeed;
         public float rotationSpeed;
-//        public float intendRotationSpeed;
         
-//        private float acceleration; //  unit/second
-//        private float rotationAcceleration;
         private AnimationCurve speedCurve;
         private AnimationCurve rotationalSpeedCurve;
 
@@ -28,53 +21,48 @@ namespace DataTypes {
 
         public void CopyFrom(PlayerStatus status) {
             speed = status.speed;
-//            intendSpeed = status.intendSpeed;
-//            intendRotationSpeed = status.intendRotationSpeed;
-//            acceleration = status.acceleration;
-//            rotationAcceleration = status.rotationAcceleration;
             rotationSpeed = status.rotationSpeed;
+            speedCurve = new AnimationCurve(status.speedCurve.keys);
+            rotationalSpeedCurve = new AnimationCurve(status.rotationalSpeedCurve.keys);
+            timer = status.timer;
+        }
+
+        public void Init(PlayerStatus status) {
+            ResetTimer();
+            speed = status.speed;
+            rotationSpeed = status.rotationSpeed;
+            speedCurve = AnimationCurve.Constant(0f, 1f, speed);
+            rotationalSpeedCurve = AnimationCurve.Constant(0f, 1f, rotationSpeed);
         }
 
         public void UpdateFromConverter(PlayerStatusConverter converter) {
-//            if (converter.instantly) {
-//                speed = intendSpeed = converter.intendedSpeed;
-//                rotationSpeed = intendRotationSpeed = converter.intendedRotationalSpeed;
-//                acceleration = 0f;
-//                rotationAcceleration = 0f;
-                speed = converter.intendedSpeed;
-                rotationSpeed = converter.intendedRotationalSpeed;
-                return;
-//            }
-//            intendSpeed = converter.intendedSpeed;
-//            intendRotationSpeed = converter.intendedRotationalSpeed;
-//            acceleration = (intendSpeed - speed) / converter.time;
-//            rotationAcceleration = (intendRotationSpeed - rotationSpeed) / converter.time;
-            
-//            ResetTimer();
-//            speedCurve = converter.speedCurve;
-//            rotationalSpeedCurve = converter.rotationalSpeedCurve;
+            switch (converter.style) {
+                case CurveStyle.Instantly:
+                    speed = converter.intendedSpeed;
+                    rotationSpeed = converter.intendedRotationalSpeed;
+                    speedCurve = AnimationCurve.Constant(0f, 1f, speed);
+                    rotationalSpeedCurve = AnimationCurve.Constant(0f, 1f, rotationSpeed);
+                    break;
+                case CurveStyle.Linear:
+                    ResetTimer();
+                    speedCurve = AnimationCurve.Linear(0f, speed, converter.time, converter.intendedSpeed);
+                    rotationalSpeedCurve =
+                        AnimationCurve.Linear(0f, rotationSpeed, converter.time, converter.intendedRotationalSpeed);
+                    break;
+                case CurveStyle.EaseInOut:
+                    ResetTimer();
+                    speedCurve = AnimationCurve.EaseInOut(0f, speed, converter.time, converter.intendedSpeed);
+                    rotationalSpeedCurve =
+                        AnimationCurve.EaseInOut(0f, rotationSpeed, converter.time, converter.intendedRotationalSpeed);
+                    break;
+            }
+
         }
 
         public void Update() {
-//            if (Mathf.Abs(speed - intendSpeed) > 0.03f) {
-//                speed += acceleration * Time.deltaTime;
-//            } else {
-//                speed = intendSpeed;
-//                acceleration = 0f;
-//            }
-//
-//            if (Mathf.Abs(rotationSpeed - intendRotationSpeed) > 1f) {
-//                rotationSpeed += rotationAcceleration * Time.deltaTime;
-//            } else {
-//                rotationSpeed = intendRotationSpeed;
-//                rotationAcceleration = 0f;
-//            }
-
-
-//            timer += Time.deltaTime;
-//
-//            speed = speedCurve.Evaluate(timer);
-//            rotationSpeed = rotationalSpeedCurve.Evaluate(timer);
+            timer += Time.deltaTime;
+            speed = speedCurve.Evaluate(timer);
+            rotationSpeed = rotationalSpeedCurve.Evaluate(timer);
         }
 
         private void ResetTimer() {
@@ -88,37 +76,56 @@ namespace DataTypes {
         public float intendedRotationalSpeed;
         public float time; //   second
         public CurveStyle style;
-//        public AnimationCurve speedChange;
-//        public AnimationCurve rotationalSpeedChange;
-        
     }
 
     
     [Serializable]
     public struct CameraStatus {
-        public Vector2 deltaFocusPoint;
-        public Vector2 intendDFP;
+        public Vector2 focusDelta;
         public float size;
-        public float intendSize;
+        
         public bool hasTarget;
         public bool hasOrientation;
 
         public Vector2 currentTarget;
         public float currentOrientation;
 
-        private float timeD;
-        private float deltaDFP;
-        private float deltaSize;
-        private Vector2 aIntendDFP;
-        private float aIntendSize;
+        private AnimationCurve sizeCurve;
+        private float toTargetMaxDelta;
+        private float cameraMaxDelta;
+        private float timer;
 
-        public void CopyFrom(CameraStatus status) {
-            deltaFocusPoint = status.deltaFocusPoint;
-            intendDFP = status.intendDFP;
+        public float GetCameraMaxDelta() {
+            return cameraMaxDelta;
+        }
+        
+        public float GetMaxDelta() {
+            return toTargetMaxDelta;
+        }
+
+        public void Init(CameraStatus status) {
+            ResetTimer();
+            focusDelta = status.focusDelta;
             size = status.size;
-            intendSize = status.intendSize;
             hasTarget = status.hasTarget;
             hasOrientation = status.hasOrientation;
+            currentTarget = status.currentTarget;
+            currentOrientation = status.currentOrientation;
+            toTargetMaxDelta = 0.1f;
+            cameraMaxDelta = 999f;
+            sizeCurve = AnimationCurve.Constant(0f, 1f, size);
+        }
+
+        public void CopyFrom(CameraStatus status) {
+            focusDelta = status.focusDelta;
+            size = status.size;
+            hasTarget = status.hasTarget;
+            hasOrientation = status.hasOrientation;
+            currentTarget = status.currentTarget;
+            currentOrientation = status.currentOrientation;
+            toTargetMaxDelta = status.toTargetMaxDelta;
+            cameraMaxDelta = status.cameraMaxDelta;
+            sizeCurve = status.sizeCurve;
         }
 
         public void UpdateFromConverter(CameraStatusConverter converter) {
@@ -126,44 +133,48 @@ namespace DataTypes {
             hasOrientation = converter.willHaveOrientation;
             currentTarget = converter.nextTarget;
             currentOrientation = converter.nextOrientation;
-            if (converter.instantly) {
-                deltaFocusPoint = intendDFP = converter.intendedDFP;
-                size = intendSize = converter.intendedSize;
-                aIntendDFP = new Vector2(0f, 0f);
-                aIntendSize = 0f;
-                return;
+            focusDelta = converter.intendedFocusDelta;
+            toTargetMaxDelta = converter.toTargetMaxSpeed * Time.deltaTime;
+            cameraMaxDelta = converter.cameraMaxSpeed * Time.deltaTime;
+            switch (converter.sizeStyle) {
+                case CurveStyle.Instantly:
+                    size = converter.intendedSize;
+                    sizeCurve = AnimationCurve.Constant(0f, 1f, size);
+                    break;
+                case CurveStyle.Linear:
+                    ResetTimer();
+                    sizeCurve = AnimationCurve.Linear(0f, size, converter.time, converter.intendedSize);
+                    break;
+                case CurveStyle.EaseInOut:
+                    ResetTimer();
+                    sizeCurve = AnimationCurve.EaseInOut(0f, size, converter.time, converter.intendedSize);
+                    break;
             }
-            intendDFP = converter.intendedDFP;
-            intendSize = converter.intendedSize;
-            timeD = converter.time;
         }
 
         public void Update() {
-            if (!Mathf.Approximately(timeD, 0f)) {
-                float disDFP = Vector2.Distance(deltaFocusPoint, intendDFP);
-//                Debug.Log("distance: " + disDFP);
-                deltaDFP = disDFP / timeD * Time.deltaTime * 2f; // * multiplier
-                deltaFocusPoint = Vector2.MoveTowards(deltaFocusPoint, intendDFP, deltaDFP);
-//                Debug.Log("current DFP: " + deltaFocusPoint);
-
-                float disSize = Mathf.Abs(size - intendSize);
-                deltaSize = disSize / timeD * Time.deltaTime * 2f; // * multiplier
-                size = Mathf.MoveTowards(size, intendSize, deltaSize);
-            }
+            timer += Time.deltaTime;
+            size = sizeCurve.Evaluate(timer);
+        }
+        
+        private void ResetTimer() {
+            timer = 0f;
         }
     }
 
     [Serializable]
     public struct CameraStatusConverter {
-        public Vector2 intendedDFP;
+        public Vector2 intendedFocusDelta;
         public float intendedSize;
         public float time; //   second
+        public CurveStyle sizeStyle;
         public bool willHaveTarget;
         public bool willHaveOrientation;
-        public bool instantly;
 
         public Vector2 nextTarget;
         public float nextOrientation;
+        public float toTargetMaxSpeed;
+        public float cameraMaxSpeed;
     }
 
     [Serializable]

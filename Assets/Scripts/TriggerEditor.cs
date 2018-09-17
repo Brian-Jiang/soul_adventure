@@ -32,7 +32,7 @@ public class TriggerEditor : Editor {
 //		changeCameraStatus = EditorGUILayout.Toggle("Change Camera Status", changeCameraStatus);
 //		Debug.Log(changeCameraStatus);
 //		if (changeCameraStatus) {
-////			EditorGUILayout.Slider(cameraStatusConverterProperty.FindPropertyRelative("intendedDFP"), 0f, 30f, "Intended DFP");
+////			EditorGUILayout.Slider(cameraStatusConverterProperty.FindPropertyRelative("intendedFocusDelta"), 0f, 30f, "Intended DFP");
 //			EditorGUILayout.Slider(cameraStatusConverterProperty.FindPropertyRelative("intendedSize"), 3f, 25f, "Intended Camera Size");
 //			EditorGUILayout.Slider(cameraStatusConverterProperty.FindPropertyRelative("time"), 1f, 15f, "Time");
 //		}

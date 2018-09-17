@@ -22,7 +22,7 @@ public class CameraController : MonoBehaviour {
 		levelController = (LevelController) FindObjectOfType(typeof(LevelController));
 		animator = GetComponent<Animator>();
 		camera = GetComponent<Camera>();
-		status.CopyFrom(levelController.cameraStartStatus);
+		status.Init(levelController.cameraStartStatus);
 	}
 
 //	public void PlayerDieAnimation() {
@@ -40,10 +40,13 @@ public class CameraController : MonoBehaviour {
 		if (!status.hasTarget) {
 			Vector2 currentPosition = transform.position;
 			translationDelta =
-				Vector2.Distance(currentPosition, playerTransform.position + (Vector3) status.deltaFocusPoint) / 10f *
+				Vector2.Distance(currentPosition, playerTransform.position + (Vector3) status.focusDelta) / 10f *
 				translationalDeltaMultiplier;
+			if (translationDelta > status.GetCameraMaxDelta()) {
+				translationDelta = status.GetCameraMaxDelta();
+			}
 			Vector2 newPosition =
-				Vector2.MoveTowards(currentPosition, playerTransform.position + (Vector3) status.deltaFocusPoint,
+				Vector2.MoveTowards(currentPosition, playerTransform.position + (Vector3) status.focusDelta,
 					translationDelta);
 			transform.position = (Vector3) newPosition + Vector3.back;
 		} else {
@@ -51,6 +54,12 @@ public class CameraController : MonoBehaviour {
 			translationDelta =
 				Vector2.Distance(currentPosition, status.currentTarget) / 10f *
 				changeTargetTranslationDeltaMultiplier;
+			if (translationDelta > status.GetMaxDelta()) {
+				translationDelta = status.GetMaxDelta();
+			}
+			if (translationDelta > status.GetCameraMaxDelta()) {
+				translationDelta = status.GetCameraMaxDelta();
+			}
 			Vector2 newPosition =
 				Vector2.MoveTowards(currentPosition, status.currentTarget, translationDelta);
 			transform.position = (Vector3) newPosition + Vector3.back;
