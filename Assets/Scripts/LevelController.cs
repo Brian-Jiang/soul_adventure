@@ -1,29 +1,52 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using DataTypes;
+using FlowCanvas;
+using JetBrains.Annotations;
+using NodeCanvas.Framework;
+using UnityEditor;
 using UnityEngine;
 
 public class LevelController : MonoBehaviour {
 	public PlayerStatus playerStartStatus;
 	public CameraStatus cameraStartStatus;
 	public CameraController cameraController;
+	public GameObject starter;
 	
-	public Transform playerStartTrans;
+//	public Transform playerStartTrans;
+//	public Animator UIAnimator;
 
 	private int rota = 0;
 
 	private int bluePts;
 	private int orangePts;
+	private GameObject[] triggers;
 	private PlayerSaveInfo lastSave;
 
+//	public static bool s_drawAllGizmos;
+//	public bool drawAllGizmos;
+	
+
+
+	private void Awake() {
+//		s_drawAllGizmos = drawAllGizmos;
+	}
+
 	private void Start() {
-		lastSave.init(playerStartTrans, playerStartStatus);
+		triggers = GameObject.FindGameObjectsWithTag("Trigger");
+//		lastSave.init(playerStartTrans, playerStartStatus);
+	}
+
+	private void Update() {
+//		Debug.Log(FindLastActiveSave().name);
 	}
 
 	public void PlayerDie() {
-		Time.timeScale = 0;
-		cameraController.PlayerDieAnimation();
+		GraphOwner.SendGlobalEvent("PlayerDie");
+//		Time.timeScale = 0;
+//		cameraController.PlayerDieAnimation();
 	}
 
 	public void OnTouchEnter(bool left) {
@@ -56,19 +79,39 @@ public class LevelController : MonoBehaviour {
 					break;
 				case 'o':
 					Debug.Log("Collect orange pt");
+					orangePts++;
 					break;
 		}
 	}
 
-#if DEBUG
-	private void OnGUI() {
-    		GUI.skin.box.normal.textColor = Color.black;
-    		GUI.skin.box.font = Font.CreateDynamicFontFromOSFont("Tahoma Regular",15);
-    //		Debug.Log(Font.CreateDynamicFontFromOSFont("Tahoma Regular",10));
-    //		Debug.Log("Font name: " + GUI.skin.box.font.name);
-    //		GUI.skin.box.fontSize = 40;
-    		GUI.Box(new Rect(10f, 10f, 200f, 100f), "blue pts: " + bluePts);
-    	}
-#endif
-	
+	public int GetBluePts() {
+		return bluePts;
+	}
+
+	public int GetOrangePts() {
+		return orangePts;
+	}
+
+	public string GetLastSaveName() {
+		return FindLastActiveSave().name;
+	}
+
+	private GameObject FindLastActiveSave() {
+		foreach (var trigger in triggers) {
+			if (trigger.GetComponent<TriggerController>().IsActiveSave()) {
+				return trigger;
+			}
+		}
+
+		return starter;
+	}
 }
+//
+//[ExecuteInEditMode]
+//public class NamingProcess : MonoBehaviour {
+//	public static int triggerCount = 0;
+//
+//	public static void IncrementTrigger() {
+//		triggerCount += 1;
+//	}
+//}
