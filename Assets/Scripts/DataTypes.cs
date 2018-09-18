@@ -126,6 +126,7 @@ namespace DataTypes {
             toTargetMaxDelta = status.toTargetMaxDelta;
             cameraMaxDelta = status.cameraMaxDelta;
             sizeCurve = status.sizeCurve;
+            timer = status.timer;
         }
 
         public void UpdateFromConverter(CameraStatusConverter converter) {
@@ -180,14 +181,28 @@ namespace DataTypes {
     [Serializable]
     public struct PlayerSaveInfo {
         public Vector2 savePositionDelta;
-        public float saveOrientation;
+        public float saveOrientationDelta;
+
+        [HideInInspector]
+        public Vector3 cameraPosition;
+        [HideInInspector]
+        public float cameraOrientation;
 
         private bool active;
-        private PlayerStatus saveStatus;
+        private PlayerStatus playerStatus;
+        private CameraStatus cameraStatus;
+//        private Transform cameraTrans;
 
-        public void Save(PlayerStatus status) {
-            saveStatus.CopyFrom(status);
+        public void SavePlayer(PlayerStatus status) {
+            playerStatus.CopyFrom(status);
             active = true;
+        }
+
+        public void SaveCamera(CameraStatus status, GameObject camera) {
+            cameraStatus.CopyFrom(status);
+            cameraPosition = camera.transform.position;
+            cameraOrientation = camera.transform.rotation.eulerAngles.z;
+//            cameraTrans = camera.transform;
         }
 
         public void Reset() {
@@ -197,5 +212,17 @@ namespace DataTypes {
         public bool IsActive() {
             return active;
         }
+        
+        public PlayerStatus GetPlayerStatus() {
+            return playerStatus;
+        }
+        
+        public CameraStatus GetCameraStatus() {
+            return cameraStatus;
+        }
+
+//        public Transform GetCameraTrans() {
+//            return cameraTrans;
+//        }
     }
 }

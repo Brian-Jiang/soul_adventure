@@ -12,17 +12,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cacheType: 1
+<<<<<<< HEAD
   lastUpdatedAtString: 0001-01-01T00:00:00.000+00:00
   initializedAtString: 0001-01-01T00:00:00.000+00:00
   currentGitRemote:
     name: 
     url: 
+=======
+  lastUpdatedAtString: 2018-09-17T11:29:08.242-07:00
+  initializedAtString: 2018-09-17T11:29:08.242-07:00
+  currentGitRemote:
+    name: origin
+    url: https://github.com/Brian-Jiang/soul_adventure.git
+>>>>>>> a63e36cf583350740b3258c04f9616365882caa7
     login: 
     user: 
     host: 
     function: 0
     token: 
   currentGitBranch:
+<<<<<<< HEAD
     name: 
     tracking: 
   currentConfigBranch:
@@ -35,3 +44,17 @@ MonoBehaviour:
     name: 
     url: 
   currentHead: 
+=======
+    name: master
+    tracking: origin/master
+  currentConfigBranch:
+    name: master
+    remote:
+      name: origin
+      url: https://github.com/Brian-Jiang/soul_adventure.git
+    trackingBranch: master
+  currentConfigRemote:
+    name: origin
+    url: https://github.com/Brian-Jiang/soul_adventure.git
+  currentHead: b9b0b5b
+>>>>>>> a63e36cf583350740b3258c04f9616365882caa7

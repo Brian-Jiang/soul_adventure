@@ -33,7 +33,16 @@ public class CameraController : MonoBehaviour {
 		controller.UpdateCameraStatus(ref status);
 	}
 
+	public void SaveProgress(TriggerController controller) {
+		controller.SaveCameraProgress(status, gameObject);
+	}
+	
+	public void UpdateStatus(CameraStatus newStatus) {
+		status.CopyFrom(newStatus);
+	}
+
 	private void Update() {
+		if (Time.deltaTime.CompareTo(0f) == 0) return;
 		status.Update();
 		
 		// move position

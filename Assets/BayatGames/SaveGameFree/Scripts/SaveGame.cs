@@ -12,7 +12,7 @@ namespace BayatGames.SaveGameFree
 {
 
     /// <summary>
-    /// Save game path. base paths for your save games.
+    /// SavePlayer game path. base paths for your save games.
     /// </summary>
     public enum SaveGamePath
     {
@@ -30,15 +30,15 @@ namespace BayatGames.SaveGameFree
     }
 
     /// <summary>
-    /// Save Game.
-    /// Use these APIs to Save & Load game data.
+    /// SavePlayer Game.
+    /// Use these APIs to SavePlayer & Load game data.
     /// If you are looking for Web saving and loading use SaveGameWeb.
     /// </summary>
     public static class SaveGame
     {
 
         /// <summary>
-        /// Save handler.
+        /// SavePlayer handler.
         /// </summary>
         public delegate void SaveHandler(object obj, string identifier, bool encode, string password, ISaveGameSerializer serializer, ISaveGameEncoder encoder, Encoding encoding, SaveGamePath path);
 
@@ -211,7 +211,7 @@ namespace BayatGames.SaveGameFree
         }
 
         /// <summary>
-        /// Save the specified identifier, obj, encode and encodePassword.
+        /// SavePlayer the specified identifier, obj, encode and encodePassword.
         /// </summary>
         /// <param name="identifier">Identifier.</param>
         /// <param name="obj">Object.</param>
@@ -223,7 +223,7 @@ namespace BayatGames.SaveGameFree
         }
 
         /// <summary>
-        /// Save the specified identifier, obj and encodePassword.
+        /// SavePlayer the specified identifier, obj and encodePassword.
         /// </summary>
         /// <param name="identifier">Identifier.</param>
         /// <param name="obj">Object.</param>
@@ -235,7 +235,7 @@ namespace BayatGames.SaveGameFree
         }
 
         /// <summary>
-        /// Save the specified identifier, obj and serializer.
+        /// SavePlayer the specified identifier, obj and serializer.
         /// </summary>
         /// <param name="identifier">Identifier.</param>
         /// <param name="obj">Object.</param>
@@ -247,7 +247,7 @@ namespace BayatGames.SaveGameFree
         }
 
         /// <summary>
-        /// Save the specified identifier, obj and encoder.
+        /// SavePlayer the specified identifier, obj and encoder.
         /// </summary>
         /// <param name="identifier">Identifier.</param>
         /// <param name="obj">Object.</param>
@@ -259,7 +259,7 @@ namespace BayatGames.SaveGameFree
         }
 
         /// <summary>
-        /// Save the specified identifier, obj and encoding.
+        /// SavePlayer the specified identifier, obj and encoding.
         /// </summary>
         /// <param name="identifier">Identifier.</param>
         /// <param name="obj">Object.</param>
@@ -271,11 +271,11 @@ namespace BayatGames.SaveGameFree
         }
 
         /// <summary>
-        /// Save the specified identifier, obj and savePath.
+        /// SavePlayer the specified identifier, obj and savePath.
         /// </summary>
         /// <param name="identifier">Identifier.</param>
         /// <param name="obj">Object.</param>
-        /// <param name="savePath">Save path.</param>
+        /// <param name="savePath">SavePlayer path.</param>
         /// <typeparam name="T">The 1st type parameter.</typeparam>
         public static void Save<T>(string identifier, T obj, SaveGamePath savePath)
         {
@@ -382,7 +382,7 @@ namespace BayatGames.SaveGameFree
                 }
 #else
 				PlayerPrefs.SetString ( filePath, encoded );
-				PlayerPrefs.Save ();
+				PlayerPrefs.SavePlayer ();
 #endif
             }
             else if (!IOSupported())
@@ -487,7 +487,7 @@ namespace BayatGames.SaveGameFree
         /// Load the specified identifier and savePath.
         /// </summary>
         /// <param name="identifier">Identifier.</param>
-        /// <param name="savePath">Save path.</param>
+        /// <param name="savePath">SavePlayer path.</param>
         /// <typeparam name="T">The 1st type parameter.</typeparam>
         public static T Load<T>(string identifier, SaveGamePath savePath)
         {
@@ -559,7 +559,7 @@ namespace BayatGames.SaveGameFree
         /// </summary>
         /// <param name="identifier">Identifier.</param>
         /// <param name="defaultValue">Default value.</param>
-        /// <param name="savePath">Save path.</param>
+        /// <param name="savePath">SavePlayer path.</param>
         /// <typeparam name="T">The 1st type parameter.</typeparam>
         public static T Load<T>(string identifier, T defaultValue, SaveGamePath savePath)
         {

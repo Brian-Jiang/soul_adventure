@@ -8,7 +8,7 @@ namespace BayatGames.SaveGameFree.Encoders
 {
 
 	/// <summary>
-	/// Save Game Simple Encoder.
+	/// SavePlayer Game Simple Encoder.
 	/// Grabbed from https://stackoverflow.com/questions/10168240/encrypting-decrypting-a-string-in-c-sharp
 	/// </summary>
 	public class SaveGameSimpleEncoder : ISaveGameEncoder

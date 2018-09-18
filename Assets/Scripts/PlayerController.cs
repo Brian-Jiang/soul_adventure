@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour {
 
 	private CameraController cameraController;
 	private PlayerStatus playerStatus;
-	private CameraStatus cameraStatus;
+//	private CameraStatus cameraStatus;
 	private LevelController levelController;
 	private int rota;
 //	private bool onLeft;
@@ -26,6 +26,10 @@ public class PlayerController : MonoBehaviour {
 
 	public PlayerStatus GetPlayerStatus() {
 		return playerStatus;
+	}
+
+	public void UpdateStatus(PlayerStatus status) {
+		playerStatus.CopyFrom(status);
 	}
 
 	private void OnEnable() {
@@ -47,10 +51,13 @@ public class PlayerController : MonoBehaviour {
 			levelController.PlayerDie();
 		} else if(other.CompareTag("Trigger")) {
 			var controller = other.gameObject.GetComponent<TriggerController>();
+			controller.SavePlayerProgress(playerStatus);
+			cameraController.SaveProgress(controller);
+			
 			controller.UpdatePlayerStatus(ref playerStatus);
 			cameraController.Trigger(controller);
 			controller.PlayAnimations();
-			controller.SaveProgress(playerStatus);
+			
 			controller.IsTriggered();
 		} else if (other.CompareTag("blue_pt")) {
 			levelController.CollectPt('b');

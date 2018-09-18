@@ -8,7 +8,7 @@ namespace BayatGames.SaveGameFree.Serializers
 {
 
 	/// <summary>
-	/// Interface for Save Game Serializers.
+	/// Interface for SavePlayer Game Serializers.
 	/// </summary>
 	public interface ISaveGameSerializer
 	{

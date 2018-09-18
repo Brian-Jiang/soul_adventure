@@ -8,7 +8,7 @@ namespace BayatGames.SaveGameFree.Serializers
 {
 
 	/// <summary>
-	/// Save Game Json Serializer.
+	/// SavePlayer Game Json Serializer.
 	/// </summary>
 	public class SaveGameJsonSerializer : ISaveGameSerializer
 	{

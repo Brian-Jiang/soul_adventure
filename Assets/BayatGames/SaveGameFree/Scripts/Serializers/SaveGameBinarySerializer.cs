@@ -12,7 +12,7 @@ namespace BayatGames.SaveGameFree.Serializers
 {
 
 	/// <summary>
-	/// Save Game Binary Serializer.
+	/// SavePlayer Game Binary Serializer.
 	/// </summary>
 	public class SaveGameBinarySerializer : ISaveGameSerializer
 	{

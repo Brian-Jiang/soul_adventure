@@ -12,7 +12,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cacheType: 7
+<<<<<<< HEAD
   lastUpdatedAtString: 0001-01-01T00:00:00.000+00:00
   initializedAtString: 0001-01-01T00:00:00.000+00:00
   gitName: 
   gitEmail: 
+=======
+  lastUpdatedAtString: 2018-09-17T20:41:44.888-07:00
+  initializedAtString: 2018-09-17T20:41:44.888-07:00
+  gitName: Brian
+  gitEmail: bjjx1999@live.com
+>>>>>>> a63e36cf583350740b3258c04f9616365882caa7
