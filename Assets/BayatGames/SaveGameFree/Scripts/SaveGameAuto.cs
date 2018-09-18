@@ -11,15 +11,15 @@ namespace BayatGames.SaveGameFree
 {
 
 	/// <summary>
-	/// Save Game Auto.
+	/// SavePlayer Game Auto.
 	/// Make your game objects save their position, rotaiton and scale automatically.
 	/// </summary>
-	[AddComponentMenu ( "Save Game Free/Auto Save" )]
+	[AddComponentMenu ( "SavePlayer Game Free/Auto SavePlayer" )]
 	public class SaveGameAuto : MonoBehaviour
 	{
 
 		/// <summary>
-		/// Save format.
+		/// SavePlayer format.
 		/// </summary>
 		public enum SaveFormat
 		{
@@ -110,23 +110,23 @@ namespace BayatGames.SaveGameFree
 		public bool resetBlanks = true;
 
 
-		[Header ( "What to Save?" )]
+		[Header ( "What to SavePlayer?" )]
 		[Space]
 
 
-		[Tooltip ( "Save Position?" )]
+		[Tooltip ( "SavePlayer Position?" )]
 		/// <summary>
 		/// The save position.
 		/// </summary>
 		public bool savePosition = true;
 
-		[Tooltip ( "Save Rotation?" )]
+		[Tooltip ( "SavePlayer Rotation?" )]
 		/// <summary>
 		/// The save rotation.
 		/// </summary>
 		public bool saveRotation = true;
 
-		[Tooltip ( "Save Scale?" )]
+		[Tooltip ( "SavePlayer Scale?" )]
 		/// <summary>
 		/// The save scale.
 		/// </summary>
@@ -156,41 +156,41 @@ namespace BayatGames.SaveGameFree
 		public Vector3 defaultScale = Vector3.one;
 
 
-		[Header ( "Save Events" )]
+		[Header ( "SavePlayer Events" )]
 		[Space]
 
 
-		[Tooltip ( "Save on Awake()" )]
+		[Tooltip ( "SavePlayer on Awake()" )]
 		/// <summary>
 		/// The save on awake.
 		/// </summary>
 		public bool saveOnAwake;
 
-		[Tooltip ( "Save on Start()" )]
+		[Tooltip ( "SavePlayer on Start()" )]
 		/// <summary>
 		/// The save on start.
 		/// </summary>
 		public bool saveOnStart;
 
-		[Tooltip ( "Save on OnEnable()" )]
+		[Tooltip ( "SavePlayer on OnEnable()" )]
 		/// <summary>
 		/// The save on enable.
 		/// </summary>
 		public bool saveOnEnable;
 
-		[Tooltip ( "Save on OnDisable()" )]
+		[Tooltip ( "SavePlayer on OnDisable()" )]
 		/// <summary>
 		/// The save on disable.
 		/// </summary>
 		public bool saveOnDisable = true;
 
-		[Tooltip ( "Save on OnApplicationQuit()" )]
+		[Tooltip ( "SavePlayer on OnApplicationQuit()" )]
 		/// <summary>
 		/// The save on application quit.
 		/// </summary>
 		public bool saveOnApplicationQuit = true;
 
-		[Tooltip ( "Save on OnApplicationPause()" )]
+		[Tooltip ( "SavePlayer on OnApplicationPause()" )]
 		/// <summary>
 		/// The save on application pause.
 		/// </summary>
@@ -311,7 +311,7 @@ namespace BayatGames.SaveGameFree
 		}
 
 		/// <summary>
-		/// Save this instance.
+		/// SavePlayer this instance.
 		/// </summary>
 		public virtual void Save ()
 		{

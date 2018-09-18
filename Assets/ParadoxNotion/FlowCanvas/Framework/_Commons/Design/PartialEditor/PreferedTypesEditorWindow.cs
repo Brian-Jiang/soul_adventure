@@ -104,8 +104,8 @@ namespace ParadoxNotion.Design{
 				}
 			}
 
-			if (GUILayout.Button("Save Preset")){
-				var path = EditorUtility.SaveFilePanelInProject ("Save Types Preset", "", "typePrefs", "");
+			if (GUILayout.Button("SavePlayer Preset")){
+				var path = EditorUtility.SaveFilePanelInProject ("SavePlayer Types Preset", "", "typePrefs", "");
 	            if (!string.IsNullOrEmpty(path)){
 	                System.IO.File.WriteAllText( path, JSONSerializer.Serialize(typeof(List<System.Type>), typeList, true) );
 	                AssetDatabase.Refresh();
@@ -201,7 +201,7 @@ namespace ParadoxNotion.Design{
 			ShowNotification(new GUIContent(string.Format("Type '{0}' Removed.", t.FriendlyName()) ));
 		}
 
-		///Save changes
+		///SavePlayer changes
 		void Save(){
 			UserTypePrefs.SetPreferedTypesList(typeList);
 		}

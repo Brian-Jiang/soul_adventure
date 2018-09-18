@@ -34,14 +34,24 @@ public class TriggerController : MonoBehaviour {
         }
     }
 
-    public void SaveProgress(PlayerStatus status) {
+    public void SavePlayerProgress(PlayerStatus status) {
         if (!willSaveProgress) return;
         var triggers = GameObject.FindGameObjectsWithTag("Trigger");
         foreach (var trigger in triggers) {
             trigger.GetComponent<TriggerController>().ResetSaving();
         }
 
-        saveInfo.Save(status);
+        saveInfo.SavePlayer(status);
+    }
+
+    public void SaveCameraProgress(CameraStatus status, GameObject camera) {
+        if (!willSaveProgress) return;
+//        var triggers = GameObject.FindGameObjectsWithTag("Trigger");
+//        foreach (var trigger in triggers) {
+//            trigger.GetComponent<TriggerController>().ResetSaving();
+//        }
+        
+        saveInfo.SaveCamera(status, camera);
     }
 
     public void ResetSaving() {
@@ -54,6 +64,10 @@ public class TriggerController : MonoBehaviour {
 
     public void IsTriggered() {
         triggered = true;
+    }
+
+    public void ResetTrigger() {
+        triggered = false;
     }
     
 #if UNITY_EDITOR

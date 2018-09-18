@@ -14,6 +14,7 @@ public class LevelController : MonoBehaviour {
 	public CameraStatus cameraStartStatus;
 	public CameraController cameraController;
 	public GameObject starter;
+	public GameObject camera;
 	
 //	public Transform playerStartTrans;
 //	public Animator UIAnimator;
@@ -23,7 +24,7 @@ public class LevelController : MonoBehaviour {
 	private int bluePts;
 	private int orangePts;
 	private GameObject[] triggers;
-	private PlayerSaveInfo lastSave;
+//	private PlayerSaveInfo lastSave;
 
 //	public static bool s_drawAllGizmos;
 //	public bool drawAllGizmos;
@@ -41,6 +42,7 @@ public class LevelController : MonoBehaviour {
 
 	private void Update() {
 //		Debug.Log(FindLastActiveSave().name);
+//		Debug.Log(Time.deltaTime);
 	}
 
 	public void PlayerDie() {
@@ -94,6 +96,28 @@ public class LevelController : MonoBehaviour {
 
 	public string GetLastSaveName() {
 		return FindLastActiveSave().name;
+	}
+
+	public void RestartFromCheckpoint() {
+		GraphOwner.SendGlobalEvent("Restart");
+		var player = GameObject.FindGameObjectWithTag("Player");
+		var lastSave = FindLastActiveSave();
+		lastSave.GetComponent<TriggerController>().ResetTrigger();
+		var saveInfo = lastSave.GetComponent<TriggerController>().saveInfo;
+		var rotation = lastSave.transform.rotation;
+		rotation.eulerAngles = new Vector3(0f, 0f, rotation.eulerAngles.z + saveInfo.saveOrientationDelta);
+		player.transform.SetPositionAndRotation(lastSave.transform.position + (Vector3)saveInfo.savePositionDelta, 
+			rotation);
+		
+		player.GetComponent<PlayerController>().UpdateStatus(saveInfo.GetPlayerStatus());
+//		GameObject camera = GameObject.FindGameObjectWithTag("MainCamera");
+		camera.GetComponent<CameraController>().UpdateStatus(saveInfo.GetCameraStatus());
+//		GameObject.FindGameObjectWithTag("MainCamera").transform.SetPositionAndRotation(saveInfo.GetCameraTrans().position, saveInfo.GetCameraTrans().rotation);
+		camera.transform.position = saveInfo.cameraPosition;
+		Quaternion newRotation = Quaternion.Euler(0f, 0f, saveInfo.cameraOrientation);
+		camera.transform.rotation = newRotation;
+		
+		Time.timeScale = 1f;
 	}
 
 	private GameObject FindLastActiveSave() {

@@ -152,7 +152,7 @@ namespace NodeCanvas.Framework{
 
 		///Saves the blackboard with the blackboard name as saveKey.
 		public string Save(){ return Save(this.name); }
-		///Saves the Blackboard in PlayerPrefs in the provided saveKey. You can use this for a Save system
+		///Saves the Blackboard in PlayerPrefs in the provided saveKey. You can use this for a SavePlayer system
 		public string Save(string saveKey){
 			var json = this.Serialize();
 			PlayerPrefs.SetString(saveKey, json);
@@ -161,7 +161,7 @@ namespace NodeCanvas.Framework{
 
 		///Loads a blackboard with this blackboard name as saveKey.
 		public bool Load(){	return Load(this.name); }
-		///Loads back the Blackboard from PlayerPrefs of the provided saveKey. You can use this for a Save system
+		///Loads back the Blackboard from PlayerPrefs of the provided saveKey. You can use this for a SavePlayer system
 		public bool Load(string saveKey){
 
 			var json = PlayerPrefs.GetString(saveKey);

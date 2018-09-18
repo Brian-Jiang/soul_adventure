@@ -7,7 +7,7 @@ namespace BayatGames.SaveGameFree.Encoders
 {
 
 	/// <summary>
-	/// Interface for Save Game Encoders.
+	/// Interface for SavePlayer Game Encoders.
 	/// </summary>
 	public interface ISaveGameEncoder
 	{

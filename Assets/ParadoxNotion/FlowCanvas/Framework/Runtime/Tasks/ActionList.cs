@@ -266,9 +266,9 @@ namespace NodeCanvas.Framework{
 			}
 		}
 
-		[ContextMenu("Save List Preset")]
+		[ContextMenu("SavePlayer List Preset")]
 		void DoSavePreset(){
-			var path = EditorUtility.SaveFilePanelInProject ("Save Preset", "", "actionList", "");
+			var path = EditorUtility.SaveFilePanelInProject ("SavePlayer Preset", "", "actionList", "");
             if (!string.IsNullOrEmpty(path)){
                 System.IO.File.WriteAllText( path, JSONSerializer.Serialize(typeof(ActionList), this, true) ); //true for pretyJson
                 AssetDatabase.Refresh();

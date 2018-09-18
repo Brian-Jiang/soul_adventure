@@ -156,9 +156,9 @@ namespace NodeCanvas.Editor {
 			}
 			else menu.AddDisabledItem(new GUIContent("Bind To Owner"));
 
-			//Save to asset
+			//SavePlayer to asset
 			if (owner != null && owner.graphIsBound){
-				menu.AddItem(new GUIContent("Save To Asset"), false, ()=>
+				menu.AddItem(new GUIContent("SavePlayer To Asset"), false, ()=>
 				{
 					var newGraph = (Graph)EditorUtils.CreateAsset(graph.GetType(), true);
 					if (newGraph != null){
@@ -168,7 +168,7 @@ namespace NodeCanvas.Editor {
 					}
 				});
 			}
-			else menu.AddDisabledItem(new GUIContent("Save To Asset"));
+			else menu.AddDisabledItem(new GUIContent("SavePlayer To Asset"));
 
 			//Create defined vars
 			if (graph.blackboard != null){

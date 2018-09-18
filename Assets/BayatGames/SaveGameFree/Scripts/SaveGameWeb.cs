@@ -12,8 +12,8 @@ namespace BayatGames.SaveGameFree
 {
 
 	/// <summary>
-	/// Save Game Web.
-	/// Use these APIs to Save & Load from web.
+	/// SavePlayer Game Web.
+	/// Use these APIs to SavePlayer & Load from web.
 	/// </summary>
 	public class SaveGameWeb
 	{
@@ -464,7 +464,7 @@ namespace BayatGames.SaveGameFree
 		}
 
 		/// <summary>
-		/// Save the specified identifier and obj.
+		/// SavePlayer the specified identifier and obj.
 		/// </summary>
 		/// <param name="identifier">Identifier.</param>
 		/// <param name="obj">Object.</param>
